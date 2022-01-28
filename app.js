@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyparser = require("body-parser");
 mongoose.connect('mongodb://localhost/contactDance', {useNewUrlParser: true});
-const port = 80;
+const port = process.env.PORT || 8000;
 
 // define mongoose schema
 var contactSchema = new mongoose.Schema({
@@ -50,3 +50,7 @@ app.listen(port, ()=>{
     console.log(`the application started successfully on port ${port}`)
 
 });
+
+app.listen(port, () => {
+    console.log(`listening to the port no at ${port}`);
+})
